@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".MainActivity">
+
     <ImageView
         android:id="@+id/imgPortada"
         android:layout_width="416dp"
@@ -25,7 +27,7 @@
         android:layout_marginTop="18dp"
         android:layout_marginEnd="92dp"
         android:layout_marginBottom="16dp"
-        android:backgroundTint="@color/white"
+        android:background="@color/white"
         android:onClick="onClick"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"

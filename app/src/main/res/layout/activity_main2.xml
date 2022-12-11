@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".MainActivity2">
 
     <TableRow
@@ -24,7 +25,7 @@
             android:layout_height="match_parent"
 
             android:layout_weight="1"
-            android:backgroundTint="#A4F3E466"
+            android:background="#A4F3E466"
             app:srcCompat="@drawable/menu_hamburguesa"
             tools:ignore="SpeakableTextPresentCheck" />
 
@@ -33,7 +34,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:backgroundTint="#A4F3E466"
+            android:background="#A4F3E466"
             app:srcCompat="@drawable/busqueda"
             tools:ignore="SpeakableTextPresentCheck" />
 
@@ -42,7 +43,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:backgroundTint="#A4F3E466"
+            android:background="#A4F3E466"
             app:srcCompat="@drawable/usuario"
             tools:ignore="SpeakableTextPresentCheck" />
 
@@ -51,7 +52,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:backgroundTint="#A4F3E466"
+            android:background="#A4F3E466"
             app:srcCompat="@drawable/corazon"
             tools:ignore="SpeakableTextPresentCheck" />
 
@@ -60,7 +61,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:backgroundTint="#A4F3E466"
+            android:background="#A4F3E466"
             app:srcCompat="@drawable/carrito_de_compras"
             tools:ignore="SpeakableTextPresentCheck" />
 

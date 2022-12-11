@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">tart_attack</string>
+    <string name="boton_Clasicas">CLÁSICAS</string>
+    <string name="boton_Veganas">VEGANAS</string>
+    <string name="boton_Nuevas">NUEVAS</string>
+    <string name="boton_Gluten">SIN GLUTEN</string>
+    <string name="boton_Regalos">GUÍA DE REGALOS</string>
+    <string name="boton_Cuenta">Mi Cuenta</string>
+    <string name="boton_Seguir">Síguenos</string>
+    <string name="boton_Cliente">Atención al Cliente</string>
+    <string name="boton_Config">Configuración de App</string>
+    <string name="compras_realizadas" translatable="false">Para compras realizadas entre el 23/11 al 27/12/2022, hasta un 15% de descuento para nuestros miembros</string>
+    <string name="regala_tarta" translatable="false">REGALA UNA TARTA POR NAVIDAD! \n\n¡todos los sabores los encontraras aqui!</string>
+    <string name="prueba_nueva" translatable="false">Prueba la nueva tarta sabor KIWI</string>
+    <string name="treschocolates" translatable="false">Sabor tres chocolates</string>
+    <string name="fresa">Sabor fresa</string>
+    <string name="dulceleche">Sabor dulce de leche</string>
+    <string name="Clasicas_imgbtn">CLÁSICAS</string>
+    <string name="envio">Entrega gratuita para miembros en pedidos superiores a 30 €</string>
+    <string name="tart_choclat">Tarta de chocolate</string>
+    <string name="precio_tc">15.99 € </string>
+    <string name="tart_de_queso">Tarta de queso</string>
+    <string name="precio_tq">12.99 € </string>
+    <string name="tarta_fresa">Tarta de fresa</string>
+    <string name="precio_tf">14.99 € </string>
+    <string name="tart_manzana">Tarta de manzana</string>
+    <string name="precio_tm">10.99 € </string>
+    <string name="recomendadas">Recomendadas para ti</string>
+</resources>

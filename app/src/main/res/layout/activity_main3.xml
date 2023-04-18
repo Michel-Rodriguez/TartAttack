@@ -6,20 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity3">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="144dp"
-        android:layout_height="120dp"
-        android:layout_marginStart="37dp"
-        android:layout_marginEnd="199dp"
-        android:background="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/imgbuttprincipal" />
-
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="334dp"
@@ -31,8 +17,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView">
+        app:layout_constraintStart_toStartOf="parent">
 
         <Button
             android:id="@+id/buttClas"
@@ -121,4 +106,22 @@
             android:textColor="#0C0C0C"
             android:textSize="16sp" />
     </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/buttHome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:background="@color/white"
+        android:maxWidth="100dp"
+        android:maxHeight="100dp"
+        android:onClick="onClick"
+        android:scaleType="fitCenter"
+
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/imgbuttprincipal" />
+
 </android.support.constraint.ConstraintLayout>

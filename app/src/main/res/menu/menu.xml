@@ -3,7 +3,7 @@
 
     <item
         android:id="@+id/idClasicas"
-        android:title="Clasicas" >
+        android:title="@string/boton_Clasicas">
         <!--<menu>
             <item android:id="@+id/NuevoCliente"
                 android:title="Nuevo Cliente"
@@ -15,9 +15,9 @@
     </item>
     <item
         android:id="@+id/idIVeganas"
-        android:title="Veganas" />
+        android:title="@string/boton_Veganas" />
     <item
         android:id="@+id/idSinGluten"
-        android:title="Sin Gluten" />
+        android:title="@string/boton_Gluten" />
 
 </menu>

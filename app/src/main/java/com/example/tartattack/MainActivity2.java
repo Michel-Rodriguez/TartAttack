@@ -17,6 +17,13 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        try {
+            Thread.sleep(3000);
+            setTheme(R.style.Theme_TartAttack);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 

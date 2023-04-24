@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <item
+        android:id="@+id/idHome"
+        android:icon="@drawable/ic_action_home"
+        app:showAsAction="always"
+        android:title="@string/boton_Cliente" />
+    <item
+        android:id="@+id/idUser"
+        android:icon="@drawable/ic_action_user"
+        app:showAsAction="always"
+        android:title="@string/boton_Cliente" />
+    <item
+        android:id="@+id/idCesta"
+        android:icon="@drawable/ic_action_cesta"
+        app:showAsAction="always"
+        android:title="@string/boton_Cliente" />
     <item
         android:id="@+id/idClasicas"
         android:title="@string/boton_Clasicas">

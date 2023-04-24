@@ -15,20 +15,21 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
 
     ImageButton botonMenu;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         try {
             Thread.sleep(3000);
             setTheme(R.style.Theme_TartAttack);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
-        botonMenu = (ImageButton) findViewById(R.id.menubotoni);
-        botonMenu.setOnClickListener((View.OnClickListener) this);
 
     }
     public boolean onCreateOptionsMenu(Menu menu){
@@ -54,6 +55,10 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
             return true;
         }
         if(id == R.id.idIVeganas){
+            return true;
+        }
+        if (id == R.id.idHome){
+            openCambio();
             return true;
         }
         return super.onOptionsItemSelected(item);

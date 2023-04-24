@@ -20,61 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginBottom="10dp"
-            android:background="#A4F3E466">
-
-
-            <ImageButton
-                android:id="@+id/menubotoni2"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-
-                android:layout_weight="1"
-                android:backgroundTint="#A4F3E466"
-                app:srcCompat="@drawable/menu_hamburguesa" />
-
-            <TextView
-                android:id="@+id/clasica"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_weight="4"
-                android:gravity="center"
-                android:text="@string/Clasicas_imgbtn"
-                android:textStyle="bold" />
-
-            <ImageButton
-                android:id="@+id/imageButton8"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:backgroundTint="#A4F3E466"
-                app:srcCompat="@drawable/busqueda" />
-
-            <ImageButton
-                android:id="@+id/imageButton10"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:backgroundTint="#A4F3E466"
-                app:srcCompat="@drawable/usuario" />
-
-            <ImageButton
-                android:id="@+id/imageButton9"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:backgroundTint="#A4F3E466"
-                app:srcCompat="@drawable/corazon" />
-
-            <ImageButton
-                android:id="@+id/imageButton6"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:backgroundTint="#A4F3E466"
-                app:srcCompat="@drawable/carrito_de_compras" />
-
-        </TableRow>
+            android:background="#A4F3E466"/>
 
         <TableRow
             android:layout_width="match_parent"

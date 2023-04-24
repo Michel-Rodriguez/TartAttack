@@ -10,62 +10,13 @@
     <TableRow
         android:id="@+id/tableRow"
         android:layout_width="407dp"
-        android:layout_height="57dp"
+        android:layout_height="25dp"
         android:layout_marginBottom="8dp"
-        android:background="#A4F3E466"
+        android:background="#00F3E466"
         app:layout_constraintBottom_toTopOf="@+id/tableRow2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-
-        <ImageButton
-            android:id="@+id/menubotoni"
-            android:layout_width="4dp"
-            android:layout_height="match_parent"
-
-            android:layout_weight="1"
-            android:background="#A4F3E466"
-            app:srcCompat="@drawable/menu_hamburguesa"
-            tools:ignore="SpeakableTextPresentCheck" />
-
-        <ImageButton
-            android:id="@+id/imageButton8"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="#A4F3E466"
-            app:srcCompat="@drawable/busqueda"
-            tools:ignore="SpeakableTextPresentCheck" />
-
-        <ImageButton
-            android:id="@+id/imageButton10"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="#A4F3E466"
-            app:srcCompat="@drawable/usuario"
-            tools:ignore="SpeakableTextPresentCheck" />
-
-        <ImageButton
-            android:id="@+id/imageButton9"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="#A4F3E466"
-            app:srcCompat="@drawable/corazon"
-            tools:ignore="SpeakableTextPresentCheck" />
-
-        <ImageButton
-            android:id="@+id/imageButton6"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="#A4F3E466"
-            app:srcCompat="@drawable/carrito_de_compras"
-            tools:ignore="SpeakableTextPresentCheck" />
-
-    </TableRow>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView3"
@@ -117,7 +68,7 @@
         <TextView
             android:id="@+id/textView1"
             android:layout_width="wrap_content"
-            android:layout_height="65dp"
+            android:layout_height="75dp"
             android:gravity="center|center_horizontal"
             android:text="@string/compras_realizadas"
             android:textColor="@color/black"

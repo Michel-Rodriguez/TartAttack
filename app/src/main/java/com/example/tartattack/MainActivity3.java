@@ -23,8 +23,6 @@ public class MainActivity3 extends AppCompatActivity implements View.OnClickList
         botonClas.setOnClickListener((View.OnClickListener) this);
         botonHome = (ImageButton) findViewById(R.id.buttHome);
 
-
-
     }
 
     public boolean onCreateOptionsMenu(Menu menu){
@@ -41,18 +39,22 @@ public class MainActivity3 extends AppCompatActivity implements View.OnClickList
         if(botonHome.isPressed()){
             openHome();
         }
+
     }
+
+
 
     //Method openCambio que cambia la actividad si se pulsa el boton (mirar en method onClick)
     public void openCambio() {
-        Intent intentCambio = new Intent(this, MainActivity4.class);
+        Intent intentCambio = new Intent(this, TartasClasicas.class);
         startActivity(intentCambio);
 
     }
 
     public  void openHome(){
-        Intent intentHome = new Intent(this, MainActivity2.class);
+        Intent intentHome = new Intent(this, HomeActivity.class);
     }
+
 
 
 

@@ -96,6 +96,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@color/white"
+            android:onClick="accesoImg"
             app:srcCompat="@drawable/tarta3ch"
             tools:ignore="SpeakableTextPresentCheck" />
 
@@ -105,6 +106,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@color/white"
+            android:onClick="accesoImg"
             app:srcCompat="@drawable/tartafresssr"
             tools:ignore="SpeakableTextPresentCheck" />
 
@@ -114,6 +116,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@color/white"
+            android:onClick="accesoImg"
             app:srcCompat="@drawable/tartadulcelche"
             tools:ignore="SpeakableTextPresentCheck" />
     </TableRow>

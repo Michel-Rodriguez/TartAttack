@@ -56,6 +56,7 @@ public class TartasSinGluten extends HomeActivity implements AdapterView.OnItemC
 
 
 
+
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
 
@@ -63,7 +64,7 @@ public class TartasSinGluten extends HomeActivity implements AdapterView.OnItemC
     }
 
 
-    public class MiAdaptador extends ArrayAdapter<Tarta> {
+   /* public class MiAdaptador extends ArrayAdapter<Tarta> {
         private int mResource;
         private ArrayList<Tarta> misTartas;
 
@@ -122,7 +123,7 @@ public class TartasSinGluten extends HomeActivity implements AdapterView.OnItemC
         }
 
 
-    }
+    }*/
 
 
 }

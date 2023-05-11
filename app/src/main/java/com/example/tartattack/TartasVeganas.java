@@ -1,5 +1,7 @@
 package com.example.tartattack;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -8,7 +10,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class TartasClasicas extends HomeActivity implements AdapterView.OnItemClickListener{
+public class TartasVeganas extends HomeActivity implements AdapterView.OnItemClickListener{
 
     ListView miLista;
     private String [] nombresTarta =new String [] {"Tarta de Chocate SG", "Tarta de Queso SG", "Tarta de Fresa SG",
@@ -27,8 +29,7 @@ public class TartasClasicas extends HomeActivity implements AdapterView.OnItemCl
 
 
         super.onCreate(savedInstanceState);
-
-        setContentView(R.layout.activity_tartas_clasicas);
+        setContentView(R.layout.activity_tartas_veganas);
 
         miLista = findViewById(R.id.miLista);
 
@@ -42,16 +43,10 @@ public class TartasClasicas extends HomeActivity implements AdapterView.OnItemCl
     }
 
 
-
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
 
         Toast.makeText(this, "Se ha seleccionado: "+nombresTarta[position],Toast.LENGTH_SHORT).show();
     }
 
-
-
-
-
 }
-

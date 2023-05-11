@@ -27,4 +27,9 @@
     <string name="tart_manzana">Apple pie</string>
     <string name="precio_tm">11.99 £ </string>
     <string name="recomendadas">Recommended for you</string>
+    <string name="iniciar_sesion">Log in</string>
+    <string name="Registrar">Sign in</string>
+    <string name="Acceder_Google">Sign in with Google</string>
+    <string name="Bienvenido">Welcome</string>
+    <string name="Cerrar_Sesion">Log Out</string>
 </resources>

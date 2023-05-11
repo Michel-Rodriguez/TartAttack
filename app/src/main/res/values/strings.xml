@@ -9,9 +9,9 @@
     <string name="boton_Seguir">Síguenos</string>
     <string name="boton_Cliente">Atención al Cliente</string>
     <string name="boton_Config">Configuración de App</string>
-    <string name="compras_realizadas" translatable="false">Para compras realizadas entre el 23/11 al 27/12/2022, hasta un 15% de descuento para nuestros miembros</string>
-    <string name="regala_tarta" translatable="false">REGALA UNA TARTA POR NAVIDAD! \n\n¡todos los sabores los encontraras aqui!</string>
-    <string name="prueba_nueva" translatable="false">Prueba la nueva tarta sabor KIWI</string>
+    <string name="compras_realizadas" translatable="false">Para compras realizadas entre el 01/05 al 27/05/2022, hasta un 15% de descuento para nuestros miembros</string>
+    <string name="regala_tarta" translatable="false">REGALA UNA TARTA POR EL DIA DE LA MADRE! \n\n¡todos los sabores los encontraras aqui!</string>
+    <string name="prueba_nueva" translatable="false">Prueba la nueva tarta sabor Fresa</string>
     <string name="treschocolates" translatable="false">Sabor tres chocolates</string>
     <string name="fresa">Sabor fresa</string>
     <string name="dulceleche">Sabor dulce de leche</string>
@@ -26,4 +26,14 @@
     <string name="tart_manzana">Tarta de manzana</string>
     <string name="precio_tm">10.99 € </string>
     <string name="recomendadas">Recomendadas para ti</string>
+    <string name="iniciar_sesion" translatable="false">Iniciar Sesion </string>
+    <string name="Registrar" translatable="false">Registrar </string>
+    <string name="Acceder_Google">Acceder con Google</string>
+    <string name="prefs_file">com.example.firestore_app_base.PREFERENCE_FILE_KEY</string>
+    <string name="Bienvenido">Bienvenido</string>
+    <string name="Cerrar_Sesion">Cerrar Sesion</string>
+    <string name="Tartas_Clasicas">Tartas Clasicas</string>
+    <string name="Tartas_SG">Tartas Sin Gluten</string>
+    <string name="Tartas_Veganas">Tartas Veganas</string>
+    <string name="Tartas_Personalizadas">Tartas Personalizadas</string>
 </resources>

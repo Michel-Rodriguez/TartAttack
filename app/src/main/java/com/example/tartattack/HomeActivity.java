@@ -2,9 +2,9 @@ package com.example.tartattack;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -25,7 +25,7 @@ public class HomeActivity extends AppCompatActivity {   //Clase Padre
 
     //Bundle operadores = getIntent().getExtras();
     //int numI = operadores.getInt("numero Intent");
-    int i = 8;
+    //int i = 8;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,17 +71,20 @@ public class HomeActivity extends AppCompatActivity {   //Clase Padre
             openClasicas();
             Log.i("Tag intent", "Intent a t.Clasicas");
             return true;
-        }
-        if(id == R.id.idIVeganas){
+        }if(id == R.id.idIVeganas){
+            Intent Veganas = new Intent(this, TartasVeganas.class);
+            startActivity(Veganas);
             return true;
-        }
-        if (id == R.id.idHome){
+        }if (id == R.id.idHome){
            openHome();
             return true;
-        }
-        if (id == R.id.idSinGluten){
+        }if (id == R.id.idSinGluten){
             Intent SinGluten = new Intent(this, TartasSinGluten.class);
             startActivity(SinGluten);
+            return true;
+        }if (id == R.id.idUser){
+            Intent User = new Intent(this, Sesion_Usuario_Aut.class);
+            startActivity(User);
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -107,7 +110,7 @@ public class HomeActivity extends AppCompatActivity {   //Clase Padre
     }
 
     public void comprar(View vv){  //Metodo para añadir elemento a la cesta de compra
-        Toast.makeText(this, "XXXXXXXXXXXXXXXX", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Ha añadido producto a la cesta", Toast.LENGTH_SHORT).show();
         Intent inte = new Intent(this, MainActivity3.class); //Creamos un intent el cual pasara a la Cesta
         startActivity(inte);   //al iniciar el intent tambien se pasaran archivos a la cesta
     }

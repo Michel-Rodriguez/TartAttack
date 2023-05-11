@@ -29,7 +29,7 @@
         android:drawableStart="@drawable/ic_cake"
         android:gravity="center|center_vertical"
         android:paddingStart="5dp"
-        android:text="@string/Tartas_SG"
+        android:text="@string/Tartas_Clasicas"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="22dp"
@@ -38,5 +38,4 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

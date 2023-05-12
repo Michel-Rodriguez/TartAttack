@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "722985616407",
+    "project_id": "tartattack-bd026",
+    "storage_bucket": "tartattack-bd026.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:722985616407:android:32edbc2bcfdd85bbb1c852",
+        "android_client_info": {
+          "package_name": "com.example.tartattack"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "722985616407-pgqe90orot9iebtneugd1v9lhhb2v84k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBc8ViWvNVCHpZ3bbeGZDl9QwXGgrTpZtw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "722985616407-pgqe90orot9iebtneugd1v9lhhb2v84k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

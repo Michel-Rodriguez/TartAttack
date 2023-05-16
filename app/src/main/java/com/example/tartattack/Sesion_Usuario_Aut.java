@@ -16,7 +16,6 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -39,8 +38,6 @@ public class Sesion_Usuario_Aut extends HomeActivity {
     GoogleSignInOptions gso;  //Options de Inicio de sesion
     GoogleSignInClient gsc;  //Cliente de Google
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,19 +50,13 @@ public class Sesion_Usuario_Aut extends HomeActivity {
         etPassw = findViewById(R.id.textPassw);
         mAuth = FirebaseAuth.getInstance();
 
-        //gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
-
-
-        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+        gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
                 .build();
 
         gsc = GoogleSignIn.getClient(this,gso);
-
-
         GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
-
 
         if(acct!=null){
             Toast.makeText(this, "COCAINAAAAAA!!!", Toast.LENGTH_SHORT).show();
@@ -83,8 +74,6 @@ public class Sesion_Usuario_Aut extends HomeActivity {
 
         setup();
         sesion();
-
-
     }
 
     private void sesion() {
@@ -95,14 +84,11 @@ public class Sesion_Usuario_Aut extends HomeActivity {
 
         if (email != null && provider != null) {
 
-            showHome(email, ProviderType.valueOf(provider));
+            showHome(email,ProviderType.valueOf(provider));
         }
     }
 
-
-
     private void setup() {
-
         butGoogle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -110,10 +96,9 @@ public class Sesion_Usuario_Aut extends HomeActivity {
             }
         });
 
-
         butRegistrar.setOnClickListener(view -> {
             if (!etEmail.getText().toString().isEmpty() && !etPassw.getText().toString().isEmpty()) {
-                mAuth.createUserWithEmailAndPassword(
+                mAuth.createUserWithEmailAndPassword(  //Metodo parar registrar
                                 etEmail.getText().toString(),
                                 etPassw.getText().toString())
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -135,32 +120,26 @@ public class Sesion_Usuario_Aut extends HomeActivity {
 
         butLogin.setOnClickListener(view -> {
             if (!etEmail.getText().toString().isEmpty() && !etPassw.getText().toString().isEmpty()) {
-                mAuth.signInWithEmailAndPassword(
+                mAuth.signInWithEmailAndPassword(    //Metodo para iniciar sesion
                                 etEmail.getText().toString(),
                                 etPassw.getText().toString())
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
-                                    //showAlertSucces();
                                     showHome(task.getResult().getUser().getEmail(), ProviderType.BASIC);
-                                    //showHome(task.getResult().getUser().getEmail(), ProviderType.BASIC);
-
                                     Toast.makeText(Sesion_Usuario_Aut.this, "Acceso exitoso", Toast.LENGTH_LONG).show();
                                 } else {  //App va aqui
                                     Toast.makeText(Sesion_Usuario_Aut.this, "Error al logar", Toast.LENGTH_LONG).show();
                                     //cambioH();
                                 }
                             }
-
                         });
             } else {
                 Toast.makeText(Sesion_Usuario_Aut.this, "Error en el registro", Toast.LENGTH_LONG).show();
             }
         });
-
     }
-
 
     private void showHome(String email, ProviderType provider) {
 
@@ -170,8 +149,6 @@ public class Sesion_Usuario_Aut extends HomeActivity {
         startActivity(intentHome);
     }
 
-
-    //****** ON start
     @Override
     public void onStart() {
         super.onStart();
@@ -189,7 +166,6 @@ public class Sesion_Usuario_Aut extends HomeActivity {
             finish();
         }
     }
-
 
     private void cambioH() {
         //finish();
@@ -241,7 +217,4 @@ public class Sesion_Usuario_Aut extends HomeActivity {
                 });
     }
 
-
-
 }
-

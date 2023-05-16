@@ -8,9 +8,11 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -27,7 +29,8 @@ enum ProviderType {
 public class Sesion_Usuario_Home extends HomeActivity {
 
     Button logoutButton;
-    TextView tvEmail, tvProv, tvName;
+    ImageView img;
+    TextView tvEmail, tvName;
     FirebaseAuth mAuth;
     GoogleSignInOptions gso;
     GoogleSignInClient gsc;
@@ -38,8 +41,10 @@ public class Sesion_Usuario_Home extends HomeActivity {
         setContentView(R.layout.activity_sesion_usuario_home);
 
         logoutButton = findViewById(R.id.logoutButt);
-        TextView tvEmail = findViewById(R.id.mail);
-        TextView tvName = findViewById(R.id.name);
+        tvEmail = findViewById(R.id.mail);
+        tvName = findViewById(R.id.name);
+        img = findViewById(R.id.profile);
+
 
         mAuth = FirebaseAuth.getInstance();
         gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
@@ -51,6 +56,9 @@ public class Sesion_Usuario_Home extends HomeActivity {
             tvEmail.setText(acct.getEmail());
             tvName.setText(acct.getDisplayName());
             setup(acct.getEmail(), "Google");
+            String url = String.valueOf(acct.getPhotoUrl());
+            Glide.with(this).load(url).into(img);
+
             Toast.makeText(this, "GOOGLE ACOUNT", Toast.LENGTH_SHORT).show();
         }else{
             //si no es por cuenta de google obtenemos los datos del intent y se lo pasamos al metodo septup()
@@ -60,7 +68,6 @@ public class Sesion_Usuario_Home extends HomeActivity {
             String provider1 = operador.getString("provider");
 
             setup(email1, provider1);
-
             tvName.setText(mAuth.getCurrentUser().getDisplayName());
             tvEmail.setText(email1);
 
@@ -73,9 +80,6 @@ public class Sesion_Usuario_Home extends HomeActivity {
 
         }
     }
-
-
-
 
     private void setup(String email, String provider) {
 
@@ -95,7 +99,6 @@ public class Sesion_Usuario_Home extends HomeActivity {
         });
 
     }
-
 
 
     void signOut(){

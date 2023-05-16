@@ -23,83 +23,56 @@ import java.util.List;
 
 public class HomeActivity extends AppCompatActivity {   //Clase Padre
 
-    //Bundle operadores = getIntent().getExtras();
-    //int numI = operadores.getInt("numero Intent");
-    //int i = 8;
-
+    //PRUEBAA HOMEACTIVITY GITHub
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-       //Bundle operadores = getIntent().getExtras();
-       //if(operadores.isEmpty()){
-           //Log.i("Bunde", "Bundle vacio");
-       //}
-       //int numI = operadores.getInt("numIntent");
-
-        /*if(numI != 1){
-            try {
-                Thread.sleep(3000);
-                setTheme(R.style.Theme_TartAttack);
-               // Log.i("Tag ciclo vida", String.valueOf(numI));
-                //Log.i("msj", String.valueOf(numI));
-
-
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-        }else{
-            Log.i("Tag Prueba IF => ELSE", String.valueOf(numI));
-        }*/
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_activity);
-
-
     }
-    public boolean onCreateOptionsMenu(Menu menu){
+
+    public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu, menu);
 
         return super.onCreateOptionsMenu(menu);
     }
 
     @Override
-    public boolean onOptionsItemSelected(@NonNull  MenuItem item){
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
         int id = item.getItemId();
 
-        if(id == R.id.idClasicas){
+        if (id == R.id.idClasicas) {
             openClasicas();
             Log.i("Tag intent", "Intent a t.Clasicas");
             return true;
-        }if(id == R.id.idIVeganas){
+        }
+        if (id == R.id.idIVeganas) {
             Intent Veganas = new Intent(this, TartasVeganas.class);
             startActivity(Veganas);
             return true;
-        }if (id == R.id.idHome){
-           openHome();
+        }
+        if (id == R.id.idHome) {
+            openHome();
             return true;
-        }if (id == R.id.idSinGluten){
+        }
+        if (id == R.id.idSinGluten) {
             Intent SinGluten = new Intent(this, TartasSinGluten.class);
             startActivity(SinGluten);
             return true;
-        }if (id == R.id.idUser){
+        }
+        if (id == R.id.idUser) {
             Intent User = new Intent(this, Sesion_Usuario_Aut.class);
             startActivity(User);
             return true;
         }
         return super.onOptionsItemSelected(item);
-
     }
-
-
-    //****Metodos que heredan al resto de clases
-
     public void accesoImg(View vv) {
         Intent intentCambio = new Intent(this, TartasClasicas.class);
         startActivity(intentCambio);
     }
 
-    public void openClasicas(){
+    public void openClasicas() {
         Intent intentClasicas = new Intent(this, TartasClasicas.class);
         startActivity(intentClasicas);
     }
@@ -109,7 +82,7 @@ public class HomeActivity extends AppCompatActivity {   //Clase Padre
         startActivity(intentCambio);
     }
 
-    public void comprar(View vv){  //Metodo para añadir elemento a la cesta de compra
+    public void comprar(View vv) {  //Metodo para añadir elemento a la cesta de compra
         Toast.makeText(this, "Ha añadido producto a la cesta", Toast.LENGTH_SHORT).show();
         Intent inte = new Intent(this, MainActivity3.class); //Creamos un intent el cual pasara a la Cesta
         startActivity(inte);   //al iniciar el intent tambien se pasaran archivos a la cesta
@@ -117,7 +90,6 @@ public class HomeActivity extends AppCompatActivity {   //Clase Padre
 
 
     // Clase Tarta y Metodos para Adaptar ListView,
-
 
     public class MiAdaptador extends ArrayAdapter<Tarta> {
         private int mResource;
@@ -159,27 +131,18 @@ public class HomeActivity extends AppCompatActivity {   //Clase Padre
             return miFila;
         }
     }
-
-
-
     //**Clase Tarta para añadir a la lista personalizada**
     public class Tarta {
-
         String nombreTarta;
         String precio;
         int imagen;
-
-        public  Tarta (String nombreTarta, String precio, int imagen){  //Constructor de la clase Tarta
+        public Tarta(String nombreTarta, String precio, int imagen) {  //Constructor de la clase Tarta
 
             this.nombreTarta = nombreTarta;
             this.precio = precio;
             this.imagen = imagen;
-
         }
-
-
     }
-
 
 }
 

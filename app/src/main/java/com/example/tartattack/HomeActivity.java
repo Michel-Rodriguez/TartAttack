@@ -5,6 +5,8 @@ import android.content.Intent;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
+
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -19,15 +21,18 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.zip.Inflater;
 
 
 public class HomeActivity extends AppCompatActivity {   //Clase Padre
+
 
     //PRUEBAA HOMEACTIVITY GITHub
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_activity);
+
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -46,27 +51,35 @@ public class HomeActivity extends AppCompatActivity {   //Clase Padre
             Log.i("Tag intent", "Intent a t.Clasicas");
             return true;
         }
-        if (id == R.id.idIVeganas) {
+        else if (id == R.id.idIVeganas) {
             Intent Veganas = new Intent(this, TartasVeganas.class);
             startActivity(Veganas);
             return true;
         }
-        if (id == R.id.idHome) {
+        else if (id == R.id.idHome) {
             openHome();
             return true;
         }
-        if (id == R.id.idSinGluten) {
+        else if (id == R.id.idSinGluten) {
             Intent SinGluten = new Intent(this, TartasSinGluten.class);
             startActivity(SinGluten);
             return true;
         }
-        if (id == R.id.idUser) {
+        else if (id == R.id.idUser) {
             Intent User = new Intent(this, Sesion_Usuario_Aut.class);
             startActivity(User);
             return true;
+        }else if (id == R.id.idPersonalizadas) {
+            Intent personalizadas = new Intent(this, TartasPersonalizadas.class);
+            startActivity(personalizadas);
+            return true;
         }
+
         return super.onOptionsItemSelected(item);
     }
+
+
+
     public void accesoImg(View vv) {
         Intent intentCambio = new Intent(this, TartasClasicas.class);
         startActivity(intentCambio);

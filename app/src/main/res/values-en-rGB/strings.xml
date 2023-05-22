@@ -32,4 +32,7 @@
     <string name="Acceder_Google">Sign in with Google</string>
     <string name="Bienvenido">Welcome</string>
     <string name="Cerrar_Sesion">Log Out</string>
+    <string name="nav_header_desc">Navegation header</string>
+    <string name="nav_header_subtitle">header subtitule</string>
+    <string name="Elija_cant_sabores">Choose the number of flavors you want to add, with a maximum of 4 flavors</string>
 </resources>

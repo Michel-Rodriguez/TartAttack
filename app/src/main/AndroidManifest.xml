@@ -15,6 +15,9 @@
         android:theme="@style/Theme.TartAttack"
         tools:targetApi="31">
         <activity
+            android:name=".TartasPersonalizadas"
+            android:exported="false" />
+        <activity
             android:name=".TartasVeganas"
             android:exported="false" />
         <activity

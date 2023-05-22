@@ -4,6 +4,7 @@
     <string name="boton_Veganas">VEGANAS</string>
     <string name="boton_Nuevas">NUEVAS</string>
     <string name="boton_Gluten">SIN GLUTEN</string>
+    <string name="boton_Personalizadas">PERSONALIZADAS</string>
     <string name="boton_Regalos">GUÍA DE REGALOS</string>
     <string name="boton_Cuenta">Mi Cuenta</string>
     <string name="boton_Seguir">Síguenos</string>
@@ -36,4 +37,10 @@
     <string name="Tartas_SG">Tartas Sin Gluten</string>
     <string name="Tartas_Veganas">Tartas Veganas</string>
     <string name="Tartas_Personalizadas">Tartas Personalizadas</string>
+    <string name="Elija_cant_sabores">Elija cantidad de sabores que desea añadir, con un maximo de 3 sabores</string>
+    <string name="cantidad_sabores">Elija cantidad</string>
+    <string name="sabor">Elija sabor que desea</string>
+    <string name="add_cesta">Añadir a la cesta</string>
+
+
 </resources>

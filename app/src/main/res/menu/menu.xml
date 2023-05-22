@@ -20,14 +20,6 @@
     <item
         android:id="@+id/idClasicas"
         android:title="@string/boton_Clasicas">
-        <!--<menu>
-            <item android:id="@+id/NuevoCliente"
-                android:title="Nuevo Cliente"
-                android:orderInCategory="1"/>
-            <item android:id="@+id/BuscarCliente"
-                android:title="Buscar Cliente"
-                android:orderInCategory="2"/>
-        </menu>-->
     </item>
     <item
         android:id="@+id/idIVeganas"
@@ -35,5 +27,8 @@
     <item
         android:id="@+id/idSinGluten"
         android:title="@string/boton_Gluten" />
+    <item
+        android:id="@+id/idPersonalizadas"
+        android:title="@string/boton_Personalizadas"/>
 
 </menu>

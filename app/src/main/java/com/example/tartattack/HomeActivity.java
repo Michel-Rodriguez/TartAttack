@@ -5,8 +5,6 @@ import android.content.Intent;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.drawerlayout.widget.DrawerLayout;
-
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -18,20 +16,21 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.zip.Inflater;
 
 
 public class HomeActivity extends AppCompatActivity {   //Clase Padre
 
+    public int idTarta = 00000;
 
-    //PRUEBAA HOMEACTIVITY GITHub
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_activity);
+
+        ConexionSQLiteHelper conn = new ConexionSQLiteHelper(this, "bd_tartaspedido", null,1);
 
     }
 
@@ -73,6 +72,10 @@ public class HomeActivity extends AppCompatActivity {   //Clase Padre
             Intent personalizadas = new Intent(this, TartasPersonalizadas.class);
             startActivity(personalizadas);
             return true;
+        }else if (id == R.id.idCesta) {
+            Intent shop = new Intent(this, ShoppingCar.class);
+            startActivity(shop);
+            return true;
         }
 
         return super.onOptionsItemSelected(item);
@@ -95,10 +98,12 @@ public class HomeActivity extends AppCompatActivity {   //Clase Padre
         startActivity(intentCambio);
     }
 
-    public void comprar(View vv) {  //Metodo para añadir elemento a la cesta de compra
+    public void comprar(View v) {  //Metodo para añadir elemento a la cesta de compra
         Toast.makeText(this, "Ha añadido producto a la cesta", Toast.LENGTH_SHORT).show();
-        Intent inte = new Intent(this, MainActivity3.class); //Creamos un intent el cual pasara a la Cesta
-        startActivity(inte);   //al iniciar el intent tambien se pasaran archivos a la cesta
+        Intent intent = new Intent(this, ShoppingCar.class); //Creamos un intent el cual pasara a la Cesta
+
+
+        startActivity(intent);   //al iniciar el intent tambien se pasaran archivos a la cesta
     }
 
 
@@ -108,11 +113,18 @@ public class HomeActivity extends AppCompatActivity {   //Clase Padre
         private int mResource;
         private ArrayList<Tarta> misTartas;
 
+
         public MiAdaptador(@NonNull Context context, int resource, @NonNull List<Tarta> objects) {
             super(context, resource, objects);
             mResource = resource;
             misTartas = (ArrayList<Tarta>) objects;
         }
+
+
+
+
+
+
 
         //Este método sólo es necesario reescribirlo si el adaptador se enchufa a un spinner
         @Override
@@ -123,7 +135,6 @@ public class HomeActivity extends AppCompatActivity {   //Clase Padre
         @NonNull
         @Override
         public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-            //indiceCancion = misCanciones.get(position).titulo;
             return crearFila(position, convertView, parent);
         }
 
@@ -137,7 +148,7 @@ public class HomeActivity extends AppCompatActivity {   //Clase Padre
             TextView txtPrecio = miFila.findViewById(R.id.txtPrecio);
             ImageView imgTarta = miFila.findViewById(R.id.imgTarta);
 
-            txtTarta.setText(misTartas.get(position).nombreTarta);
+            txtTarta.setText(misTartas.get(position).sabor);
             txtPrecio.setText(misTartas.get(position).precio);
             imgTarta.setImageResource(misTartas.get(position).imagen);
 
@@ -145,14 +156,49 @@ public class HomeActivity extends AppCompatActivity {   //Clase Padre
         }
     }
     //**Clase Tarta para añadir a la lista personalizada**
-    public class Tarta {
-        String nombreTarta;
-        String precio;
-        int imagen;
-        public Tarta(String nombreTarta, String precio, int imagen) {  //Constructor de la clase Tarta
+    public static class Tarta implements Serializable {
+        String sabor, precio;
+        int imagen, id;
+        public Tarta(String sabor, String precio, int imagen) {  //Constructor de la clase Tarta
 
-            this.nombreTarta = nombreTarta;
+            this.sabor = sabor;
             this.precio = precio;
+            this.imagen = imagen;
+        }
+
+        public Tarta() {
+
+        }
+
+        public int getId() {
+            return id;
+        }
+
+        public void setId(int id) {
+            this.id = id;
+        }
+
+        public String getSabor() {
+            return sabor;
+        }
+
+        public void setSabor(String sabor) {
+            this.sabor = sabor;
+        }
+
+        public String getPrecio() {
+            return precio;
+        }
+
+        public void setPrecio(String precio) {
+            this.precio = precio;
+        }
+
+        public int getImagen() {
+            return imagen;
+        }
+
+        public void setImagen(int imagen) {
             this.imagen = imagen;
         }
     }

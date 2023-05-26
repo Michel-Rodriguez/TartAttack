@@ -37,7 +37,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".MainActivity3"
+            android:name=".ShoppingCar"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

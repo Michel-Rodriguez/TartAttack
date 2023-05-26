@@ -30,6 +30,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
+import java.util.ArrayList;
+
 public class Sesion_Usuario_Aut extends HomeActivity {
 
     Button butRegistrar, butLogin, butGoogle;
@@ -59,11 +61,10 @@ public class Sesion_Usuario_Aut extends HomeActivity {
         GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
 
         if(acct!=null){
-            Toast.makeText(this, "COCAINAAAAAA!!!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "ACCEDIENDO POR GOOGLE USER", Toast.LENGTH_SHORT).show();
             cambioH();
         }
 
-        Toast.makeText(this, "MARIAAAAAA!!!", Toast.LENGTH_SHORT).show();
         butGoogle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,7 +78,7 @@ public class Sesion_Usuario_Aut extends HomeActivity {
     }
 
     private void sesion() {
-
+        //Metodo para mantener la sesion iniciada
         SharedPreferences prefS = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE);
         String email = prefS.getString("email", null);
         String provider = prefS.getString("provider", null);

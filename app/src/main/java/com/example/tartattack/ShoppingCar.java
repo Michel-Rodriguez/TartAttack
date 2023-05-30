@@ -74,9 +74,9 @@ public class ShoppingCar extends HomeActivity {
 
     private void eliminarProducto() {
         SQLiteDatabase db=conn.getWritableDatabase();
-        String[] parametros={campoId.getText().toString()};
+        //String[] parametros={campoId.getText().toString()};
 
-        db.delete(Utilidades.TABLA_TARTAPEDIDO,Utilidades.CAMPO_ID+"=?",parametros);
+       // db.delete(Utilidades.TABLA_TARTAPEDIDO,Utilidades.CAMPO_ID+"=?",parametros);
         Toast.makeText(getApplicationContext(),"Ya se Eliminó el producto",Toast.LENGTH_LONG).show();
 
         db.close();

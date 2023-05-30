@@ -1,12 +1,9 @@
 package com.example.tartattack;
 
-import static com.example.tartattack.utilidades.Utilidades.CAMPO_ID;
-import static com.example.tartattack.utilidades.Utilidades.CAMPO_IMAGEN;
-import static com.example.tartattack.utilidades.Utilidades.CAMPO_PRECIO;
-import static com.example.tartattack.utilidades.Utilidades.CAMPO_SABOR;
 import static com.example.tartattack.utilidades.Utilidades.TABLA_TARTAPEDIDO;
 
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
@@ -28,10 +25,13 @@ public class TartasClasicas extends HomeActivity implements AdapterView.OnItemCl
     private String [] precio = new String [] {"25,99 €", "25,99 €", "25,99 €", "25,99 €", "25,99"};
     private  int [] imagenes = new int [] {R.drawable.tarta_chocolate, R.drawable.tarta_de_queso, R.drawable.tartafresa,
             R.drawable.tartadulcelche, R.drawable.tarta3ch};
+    ArrayList<Tarta> tartas;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        ArrayList<Tarta> tartas = new ArrayList<>();
+        tartas = new ArrayList<>();
+
         for(int i = 0; i < nombresTarta.length; i++){
             Tarta t = new Tarta(nombresTarta[i], precio[i], imagenes[i]);
             tartas.add(t);
@@ -45,7 +45,7 @@ public class TartasClasicas extends HomeActivity implements AdapterView.OnItemCl
 
         ConexionSQLiteHelper conn = new ConexionSQLiteHelper(this, "bd_tartaspedido", null,1);
 
-        miLista = findViewById(R.id.miLista);
+        miLista = findViewById(R.id.miListaD);
 
         MiAdaptador adapter= new MiAdaptador(this,R.layout.mi_fila_personalizada, tartas);
         ////support_simple_spinner_dropdown_item
@@ -60,13 +60,29 @@ public class TartasClasicas extends HomeActivity implements AdapterView.OnItemCl
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
         Toast.makeText(this, "Se ha seleccionado: "+nombresTarta[position],Toast.LENGTH_SHORT).show();
-        pos = position;
+        String s = nombresTarta[position];
+        String p = precio[position];
+        int img = imagenes[position];
+
+        Tarta t = new Tarta (s, p, img);
+
+        Intent intent = new Intent(this, TartaVisualizacionDetalle.class);
+        intent.putExtra("tarta", t);
+
+
+        intent.putExtra("sabor", s);
+        intent.putExtra("precio", p);
+        intent.putExtra("img", img);
+        startActivity(intent);
+
+
         Log.i("Click", "click en el elemento " + position + " de mi ListView");
     }
 
     @Override
     public void comprar(View v) {
         Toast.makeText(this, "Se ha seleccionado: "+nombresTarta[pos],Toast.LENGTH_SHORT).show();
+        limpiarTabla();
         //addTartaDB();
     }
 
@@ -88,8 +104,9 @@ public class TartasClasicas extends HomeActivity implements AdapterView.OnItemCl
         db.close();
     }
 
-    public void limpiarTabla(SQLiteDatabase db){  //METODO PARA LIMPIAR TABLA
-
+    public void limpiarTabla(){  //METODO PARA LIMPIAR TABLA
+        ConexionSQLiteHelper conn = new ConexionSQLiteHelper(this, "bd_tartaspedido", null,1);
+        SQLiteDatabase db = conn.getWritableDatabase();
         db.execSQL("DELETE FROM "+TABLA_TARTAPEDIDO);
     }
 

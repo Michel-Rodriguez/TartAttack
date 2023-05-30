@@ -8,7 +8,7 @@
     tools:context=".TartasSinGluten">
 
     <ListView
-        android:id="@+id/miLista"
+        android:id="@+id/miListaD"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="1dp"
@@ -36,7 +36,7 @@
         android:textColor="@color/black"
         android:textSize="22dp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/miLista"
+        app:layout_constraintBottom_toTopOf="@+id/miListaD"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

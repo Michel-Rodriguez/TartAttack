@@ -32,7 +32,7 @@ public class TartasSinGluten extends HomeActivity implements AdapterView.OnItemC
 
         setContentView(R.layout.activity_tartas_sin_gluten);
 
-        miLista = findViewById(R.id.miLista);
+        miLista = findViewById(R.id.miListaD);
 
         MiAdaptador adapter=
                 new MiAdaptador(this,R.layout.mi_fila_personalizada, tartas);

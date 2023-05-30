@@ -24,8 +24,8 @@ public class ConexionSQLiteHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
 
         db.execSQL(Utilidades.CREAR_TABLA_TARTAPEDIDO);
-        db.execSQL("CREATE TABLE "+""+TABLA_TARTAPEDIDO+
-                " ("+CAMPO_ID+" INT, "+CAMPO_SABOR+" TEXT,"+CAMPO_PRECIO+" TEXT, "+CAMPO_IMAGEN+" INT)");
+        //db.execSQL("CREATE TABLE "+""+TABLA_TARTAPEDIDO+
+          //      " ("+CAMPO_ID+" INT, "+CAMPO_SABOR+" TEXT,"+CAMPO_PRECIO+" TEXT, "+CAMPO_IMAGEN+" INT)");
 
 
     }

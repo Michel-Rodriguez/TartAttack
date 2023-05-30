@@ -1,7 +1,5 @@
 package com.example.tartattack;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -31,7 +29,7 @@ public class TartasVeganas extends HomeActivity implements AdapterView.OnItemCli
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tartas_veganas);
 
-        miLista = findViewById(R.id.miLista);
+        miLista = findViewById(R.id.miListaD);
 
         MiAdaptador adapter=
                 new MiAdaptador(this,R.layout.mi_fila_personalizada, tartas);

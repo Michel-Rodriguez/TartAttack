@@ -6,36 +6,46 @@
     android:layout_height="match_parent"
     tools:context=".ShoppingCar">
 
-    <ImageButton
-        android:id="@+id/buttHome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:adjustViewBounds="true"
-        android:background="@color/white"
-        android:contentDescription="@string/Bienvenido"
-        android:maxWidth="50dp"
-        android:maxHeight="50dp"
-
-        android:scaleType="fitCenter"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.009"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/imgbuttprincipal"
-        tools:ignore="SpeakableTextPresentCheck" />
-
     <ListView
-        android:id="@+id/miLista"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+
+        android:id="@+id/miListaD"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_marginStart="1dp"
-        android:layout_marginTop="51dp"
         android:layout_marginEnd="2dp"
+        android:layout_marginBottom="51dp"
         android:divider="@null"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttLimpiarCesta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:background="@color/tart"
+        android:text="Button"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/buttComprar"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/miListaD" />
+
+    <Button
+        android:id="@+id/buttComprar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="9dp"
+        android:background="@color/tart"
+        android:text="Button"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/buttLimpiarCesta"
+        app:layout_constraintTop_toBottomOf="@+id/miListaD" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

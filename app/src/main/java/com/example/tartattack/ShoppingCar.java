@@ -1,9 +1,12 @@
 package com.example.tartattack;
 
 
+import static com.example.tartattack.utilidades.Utilidades.TABLA_TARTAPEDIDO;
+
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -14,7 +17,6 @@ import java.util.ArrayList;
 public class ShoppingCar extends HomeActivity {
 
     ConexionSQLiteHelper conn;
-    ImageView ig;
     ArrayList<Tarta> listaTartas;
     ArrayList<String> listaInformacion;
     ListView miLista;
@@ -25,8 +27,7 @@ public class ShoppingCar extends HomeActivity {
         super.onCreate(savedInstanceState);
         conn = new ConexionSQLiteHelper(this, "bd_tartaspedido", null, 1);
         setContentView(R.layout.activity_shoppingcar);
-        miLista = findViewById(R.id.miLista);
-        ig = findViewById(R.id.buttHome);
+        miLista = findViewById(R.id.miListaD);
         consultarLista();
 
 
@@ -47,6 +48,7 @@ public class ShoppingCar extends HomeActivity {
             while (cursor.moveToNext()){
                 Tarta = new Tarta();
                 Tarta.setId(cursor.getInt(0));
+                Log.i("A VER PISHITA", String.valueOf(cursor.getInt(0)));
                 Tarta.setSabor(cursor.getString(1));
                 Tarta.setPrecio(cursor.getString(2));
                 Tarta.setImagen(cursor.getInt(3));
@@ -62,15 +64,8 @@ public class ShoppingCar extends HomeActivity {
 
     }
 
-    private void obtenerLista() {
-        listaInformacion = new ArrayList<String>();
 
-        for (int i=0; i<listaTartas.size();i++){
-            listaInformacion.add(listaTartas.get(i).getSabor()+" - "
-                    +listaTartas.get(i).getSabor());
-        }
 
-    }
 
     private void eliminarProducto() {
         SQLiteDatabase db=conn.getWritableDatabase();
@@ -80,6 +75,12 @@ public class ShoppingCar extends HomeActivity {
         Toast.makeText(getApplicationContext(),"Ya se Eliminó el producto",Toast.LENGTH_LONG).show();
 
         db.close();
+    }
+
+    public void limpiarTabla(){  //METODO PARA LIMPIAR TABLA
+        ConexionSQLiteHelper conn = new ConexionSQLiteHelper(this, "bd_tartaspedido", null,1);
+        SQLiteDatabase db = conn.getWritableDatabase();
+        db.execSQL("DELETE FROM "+TABLA_TARTAPEDIDO);
     }
 
 

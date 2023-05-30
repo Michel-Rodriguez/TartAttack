@@ -23,7 +23,7 @@ import java.util.List;
 
 public class HomeActivity extends AppCompatActivity {   //Clase Padre
 
-    public int idTarta = 00000;
+    public static int idTarta = 00000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,6 +99,7 @@ public class HomeActivity extends AppCompatActivity {   //Clase Padre
     }
 
     public void comprar(View v) {  //Metodo para añadir elemento a la cesta de compra
+
         Toast.makeText(this, "Ha añadido producto a la cesta", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, ShoppingCar.class); //Creamos un intent el cual pasara a la Cesta
 
@@ -119,9 +120,6 @@ public class HomeActivity extends AppCompatActivity {   //Clase Padre
             mResource = resource;
             misTartas = (ArrayList<Tarta>) objects;
         }
-
-
-
 
 
 

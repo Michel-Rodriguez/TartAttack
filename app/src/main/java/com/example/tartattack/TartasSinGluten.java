@@ -1,6 +1,7 @@
 package com.example.tartattack;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -13,15 +14,19 @@ import java.util.ArrayList;
 public class TartasSinGluten extends HomeActivity implements AdapterView.OnItemClickListener{
 
     ListView miLista;
-    private String [] nombresTarta =new String [] {"Tarta de Chocate SG", "Tarta de Queso SG", "Tarta de Fresa SG",
-            "Tarta Dulce Leche SG", "Tarta 3 Chocolates SG"};
+    private String [] nombresTarta =new String [] {"Tarta de Chocate Sin Gluten", "Tarta de Queso Sin Gluten", "Tarta de Fresa Sin GLuten",
+            "Tarta Zanahoria Sin Gluten", "Tarta 3 Chocolates Sin Gluten"};
     private String [] precio = new String [] {"25,99 €", "25,99 €", "25,99 €", "25,99 €", "25,99"};
-    private  int [] imagenes = new int [] {R.drawable.tarta_chocolate, R.drawable.tarta_de_queso, R.drawable.tartafresa,
-            R.drawable.tartadulcelche, R.drawable.tarta3ch};
+    private  int [] imagenes = new int [] {R.drawable.tarta_chocolate, R.drawable.tarta_de_queso, R.drawable.tarta_crema_vainilla_fresa,
+            R.drawable.tarta_zan, R.drawable.tarta3chocolats};
+
+    private ArrayList<Tarta> tartas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        ArrayList<Tarta> tartas = new ArrayList<Tarta>();
+        ConexionSQLiteHelper conn = new ConexionSQLiteHelper(this, "bd_tartaspedido", null,1);
+        tartas = new ArrayList<Tarta>();
+
         for(int i = 0; i < nombresTarta.length; i++){
             Tarta t = new Tarta(nombresTarta[i], precio[i], imagenes[i]);
             tartas.add(t);
@@ -31,13 +36,9 @@ public class TartasSinGluten extends HomeActivity implements AdapterView.OnItemC
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_tartas_sin_gluten);
-
         miLista = findViewById(R.id.miListaD);
+        MiAdaptador adapter= new MiAdaptador(this,R.layout.mi_fila_personalizada, tartas);
 
-        MiAdaptador adapter=
-                new MiAdaptador(this,R.layout.mi_fila_personalizada, tartas);
-        ////support_simple_spinner_dropdown_item
-        //enfuchar adaptador a la vista
         miLista.setAdapter(adapter);
         miLista.setOnItemClickListener(this);
 
@@ -47,7 +48,23 @@ public class TartasSinGluten extends HomeActivity implements AdapterView.OnItemC
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
 
-        Toast.makeText(this, "Se ha seleccionado: "+nombresTarta[position],Toast.LENGTH_SHORT).show();
+        String s = nombresTarta[position];
+        String p = precio[position];
+        int img = imagenes[position];
+        Tarta t = new Tarta (s, p, img);
+        enviarCesta(s,p, img);  //metodo para añadir los elementos de la clase Tarta al activity de Shopping Car
+
+    }
+
+    public void enviarCesta(String s, String p, int img){
+
+        Intent intent = new Intent(this, TartaVisualizacionDetalle.class);
+
+        intent.putExtra("sabor", s);
+        intent.putExtra("precio", p);
+        intent.putExtra("img", img);
+        startActivity(intent);
+
     }
 
 

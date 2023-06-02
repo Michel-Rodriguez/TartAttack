@@ -30,7 +30,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
-import java.util.ArrayList;
 
 public class Sesion_Usuario_Aut extends HomeActivity {
 
@@ -65,12 +64,9 @@ public class Sesion_Usuario_Aut extends HomeActivity {
             cambioH();
         }
 
-        butGoogle.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(Sesion_Usuario_Aut.this, "ON CLIIIICCCCCK", Toast.LENGTH_SHORT).show();
-                resultLauncher.launch(new Intent(gsc.getSignInIntent()));
-            }
+        butGoogle.setOnClickListener(v -> {
+            Toast.makeText(Sesion_Usuario_Aut.this, "ON CLIIIICCCCCK", Toast.LENGTH_SHORT).show();
+            resultLauncher.launch(new Intent(gsc.getSignInIntent()));
         });
 
         setup();
@@ -90,12 +86,7 @@ public class Sesion_Usuario_Aut extends HomeActivity {
     }
 
     private void setup() {
-        butGoogle.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                resultLauncher.launch(new Intent(gsc.getSignInIntent()));
-            }
-        });
+        butGoogle.setOnClickListener(v -> resultLauncher.launch(new Intent(gsc.getSignInIntent())));
 
         butRegistrar.setOnClickListener(view -> {
             if (!etEmail.getText().toString().isEmpty() && !etPassw.getText().toString().isEmpty()) {

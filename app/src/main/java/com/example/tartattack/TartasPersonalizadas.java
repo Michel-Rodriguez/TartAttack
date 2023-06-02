@@ -1,9 +1,7 @@
 package com.example.tartattack;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -12,9 +10,6 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.google.gson.Gson;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -23,12 +18,8 @@ public class TartasPersonalizadas extends HomeActivity implements Serializable{
 
     private final String [] saboresTarta = new String[]{"Seleccione un sabor","Chocolate", "Vainilla", "Fresa", "Cheesecake", "Dulce Leche", "Nutella"};
     private Spinner spinnerCant, spinnerSabor1, spinnerSabor2, spinnerSabor3;
-    private TextView textoSabor1, textoSabor2, textoSabor3;
-
-    private String saborFinal = "Sabor: ";
-
-
-    private Button buttonAdd;
+    private TextView  textoSabor2, textoSabor3;
+    private String saborFinal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,11 +31,10 @@ public class TartasPersonalizadas extends HomeActivity implements Serializable{
         spinnerSabor2 = findViewById(R.id.spinner_sabor_2);
         spinnerSabor3 = findViewById(R.id.spinner_sabor_3);
 
-        textoSabor1 = findViewById(R.id.sabor1);
         textoSabor2 = findViewById(R.id.sabor2);
         textoSabor3 = findViewById(R.id.sabor3);
 
-        buttonAdd = findViewById(R.id.buttAddCart);
+        Button buttonAdd = findViewById(R.id.buttAddCart);
 
 
         ArrayList<String> cantidades = new ArrayList<>();
@@ -65,8 +55,6 @@ public class TartasPersonalizadas extends HomeActivity implements Serializable{
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 String cant = (String) spinnerCant.getAdapter().getItem(i);
-                //Toast.makeText(TartasPersonalizadas.this, "Has elegido "+cant, Toast.LENGTH_SHORT).show();
-
 
                 switch (cant) {
                     case "1":
@@ -116,7 +104,7 @@ public class TartasPersonalizadas extends HomeActivity implements Serializable{
         buttonAdd.setOnClickListener(view -> {
 
             String [] saboresC = {(String) spinnerSabor1.getSelectedItem(), (String) spinnerSabor2.getSelectedItem(), (String) spinnerSabor3.getSelectedItem()};
-            String saborFinal = "Sabor: ";
+            saborFinal = "Tarta ";
 
             for (int i = 0; i < saboresC.length; i++){
                 if(saboresC[i].contains("Seleccione")) {
@@ -130,27 +118,10 @@ public class TartasPersonalizadas extends HomeActivity implements Serializable{
             if (saborFinal.contains("Seleccione"))
                 Toast.makeText(this, "Falta algun sabor por añadir, o revise cantidad de sabores elegida", Toast.LENGTH_LONG).show();
             else {
-                Toast.makeText(this, "Ha añadido tarta personalizada  " + saborFinal, Toast.LENGTH_LONG).show();
-                Tarta tartaPedida = new Tarta(saborFinal, "30,00 €", R.drawable.tarta_chocolate);
+                Toast.makeText(this, "Ha preseleccionado tarta personalizada: " + saborFinal, Toast.LENGTH_LONG).show();
+                //Tarta tartaPedida = new Tarta(saborFinal, "30,00 €", R.drawable.tarta_personalizada);
+                enviarCesta(saborFinal, "30.00 €", R.drawable.tarta_personalizada);
 
-                /*SharedPreferences prefs = PreferenceManager
-                        .getDefaultSharedPreferences(getApplicationContext());
-                SharedPreferences.Editor prefsEditor = prefs.edit();
-
-                Gson gson = new Gson();  //Instancia Gson.
-                String json = gson.toJson(tartaPedida); //convierte a .json el objeto
-                prefsEditor.putString("tartaPedida", json);
-                prefsEditor.commit();
-
-                Intent intent = new Intent(this, ShoppingCar.class);
-                Bundle bundle= new Bundle();
-                bundle.putSerializable("tarta", tartaPedida);
-                intent.putExtras(bundle);
-                startActivity(intent);
-
-
-                //setResult(RESULT_OK,intent);
-                //finish();*/
             }
 
         });
@@ -177,4 +148,15 @@ public class TartasPersonalizadas extends HomeActivity implements Serializable{
 
         }
     };
+
+    public void enviarCesta(String s, String p, int img){
+
+        Intent intent = new Intent(this, TartaVisualizacionDetalle.class);
+
+        intent.putExtra("sabor", s);
+        intent.putExtra("precio", p);
+        intent.putExtra("img", img);
+        startActivity(intent);
+
+    }
 }

@@ -115,9 +115,11 @@ public class TartaVisualizacionDetalle extends HomeActivity {
         values.put(Utilidades.CAMPO_IMAGEN, misTartasX.get(0).getImagen());
 
         long idResultante = db.insert(Utilidades.TABLA_TARTAPEDIDO, Utilidades.CAMPO_ID, values);
-        Toast.makeText(this, "ID REGISTRO: "+idResultante, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Se ha añadido a la cesta: "+ misTartasX.get(0).getSabor(), Toast.LENGTH_SHORT).show();
         db.close();
     }
+
+
 
 
 

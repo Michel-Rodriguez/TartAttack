@@ -15,7 +15,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,14 +22,13 @@ import java.util.List;
 
 public class HomeActivity extends AppCompatActivity {   //Clase Padre
 
-    public static int idTarta = 00000;
+    public static int idTarta = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_activity);
 
-        ConexionSQLiteHelper conn = new ConexionSQLiteHelper(this, "bd_tartaspedido", null,1);
 
     }
 
@@ -97,16 +95,6 @@ public class HomeActivity extends AppCompatActivity {   //Clase Padre
         Intent intentCambio = new Intent(this, HomeActivity.class);
         startActivity(intentCambio);
     }
-
-    public void comprar(View v) {  //Metodo para añadir elemento a la cesta de compra
-
-        Toast.makeText(this, "Ha añadido producto a la cesta", Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(this, ShoppingCar.class); //Creamos un intent el cual pasara a la Cesta
-
-
-        startActivity(intent);   //al iniciar el intent tambien se pasaran archivos a la cesta
-    }
-
 
     // Clase Tarta y Metodos para Adaptar ListView,
 

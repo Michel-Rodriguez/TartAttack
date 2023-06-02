@@ -5,15 +5,16 @@
     <string name="boton_Veganas">VEGAN</string>
     <string name="boton_Nuevas">NEW</string>
     <string name="boton_Gluten">GLUTEN-FREE</string>
+    <string name="boton_Personalizadas">PERSONALIZED</string>
     <string name="boton_Regalos">GIFT GUIDE</string>
     <string name="boton_Cuenta">My Account</string>
     <string name="boton_Seguir">Follow</string>
     <string name="boton_Cliente">Customer Service</string>
     <string name="boton_Config">App Configuration</string>
-    <string name="compras_realizadas" translatable="false">For purchases made between 11/23 and 12/27/2022, up to a 15% discount for our members</string>
-    <string name="regala_tarta" translatable="false">GIVE A CAKE FOR CHRISTMAS! \n\nYou will find all the flavors here!</string>
-    <string name="prueba_nueva" translatable="false">" Try the new KIWI flavor cake"</string>
-    <string name="treschocolates" translatable="false">Three chocolate cake</string>
+    <string name="compras_realizadas">For purchases made between 11/23 and 12/27/2022, up to a 15% discount for our members</string>
+    <string name="regala_tarta">GIVE A CAKE FOR CHRISTMAS! \n\nYou will find all the flavors here!</string>
+    <string name="prueba_nueva">" Try the new KIWI flavor cake"</string>
+    <string name="treschocolates">Three chocolate cake</string>
     <string name="fresa">Strawberry cake</string>
     <string name="dulceleche">Caramel cake</string>
     <string name="Clasicas_imgbtn">CLASSIC</string>
@@ -32,7 +33,14 @@
     <string name="Acceder_Google">Sign in with Google</string>
     <string name="Bienvenido">Welcome</string>
     <string name="Cerrar_Sesion">Log Out</string>
-    <string name="nav_header_desc">Navegation header</string>
-    <string name="nav_header_subtitle">header subtitule</string>
     <string name="Elija_cant_sabores">Choose the number of flavors you want to add, with a maximum of 4 flavors</string>
+    <string name="Tartas_Clasicas">Classic Cakes</string>
+    <string name="Tartas_SG">Free Gluten Cakes</string>
+    <string name="Tartas_Veganas">Vegan Cakes</string>
+    <string name="Tartas_Personalizadas">Personalized Cakes</string>
+    <string name="cantidad_sabores">Choose quantity</string>
+    <string name="sabor">Choose flavor</string>
+    <string name="add_cesta">Add to cart</string>
+    <string name="Realizar_pago">Buy now</string>
+    <string name="Limpiar_cesta">Delete products</string>
 </resources>

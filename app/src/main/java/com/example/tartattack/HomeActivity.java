@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import java.io.Serializable;
@@ -23,13 +24,15 @@ import java.util.List;
 public class HomeActivity extends AppCompatActivity {   //Clase Padre
 
     public static int idTarta = 0;
+    ImageButton tarta1, tarta2, tarta3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_activity);
-
-
+        tarta1 = findViewById(R.id.tarta1);
+        tarta2 = findViewById(R.id.tarta2);
+        tarta3 = findViewById(R.id.tarta3);
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -79,11 +82,31 @@ public class HomeActivity extends AppCompatActivity {   //Clase Padre
         return super.onOptionsItemSelected(item);
     }
 
-
-
     public void accesoImg(View vv) {
-        Intent intentCambio = new Intent(this, TartasClasicas.class);
-        startActivity(intentCambio);
+        //Intent intentCambio = new Intent(this, TartasClasicas.class);
+        String s = "sabor";
+        double p = 29.99;
+        int img = 0;
+
+
+        if(tarta1.isPressed()){
+            s = "Tart 3 chocolate";
+            img = R.drawable.tarta3chocolats;
+        }else if(tarta2.isPressed()){
+            s = "Tarta de Fresa";
+            img = R.drawable.tarta_crema_vainilla_fresa;
+
+        }else if(tarta3.isPressed()){
+            s = "Tarta de Dulce de leche";
+            img = R.drawable.tarta_dulcelexe;
+        }
+
+        Intent intent = new Intent(HomeActivity.this, TartaVisualizacionDetalle.class);
+        intent.putExtra("sabor", s);
+        intent.putExtra("precio", p);
+        intent.putExtra("img", img);
+        startActivity(intent);
+
     }
 
     public void openClasicas() {
@@ -99,8 +122,8 @@ public class HomeActivity extends AppCompatActivity {   //Clase Padre
     // Clase Tarta y Metodos para Adaptar ListView,
 
     public class MiAdaptador extends ArrayAdapter<Tarta> {
-        private int mResource;
-        private ArrayList<Tarta> misTartas;
+        private final int mResource;
+        private final ArrayList<Tarta> misTartas;
 
 
         public MiAdaptador(@NonNull Context context, int resource, @NonNull List<Tarta> objects) {
@@ -109,22 +132,19 @@ public class HomeActivity extends AppCompatActivity {   //Clase Padre
             misTartas = (ArrayList<Tarta>) objects;
         }
 
-
-
-
         //Este método sólo es necesario reescribirlo si el adaptador se enchufa a un spinner
         @Override
         public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-            return crearFila(position, convertView, parent);
+            return crearFila(position, parent);
         }
 
         @NonNull
         @Override
         public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-            return crearFila(position, convertView, parent);
+            return crearFila(position, parent);
         }
 
-        private View crearFila(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+        private View crearFila(int position, @NonNull ViewGroup parent) {
             //Este método es invocado tantas veces como "filas" se pinten en la actividad
 
             LayoutInflater miInflador = getLayoutInflater();
@@ -135,17 +155,19 @@ public class HomeActivity extends AppCompatActivity {   //Clase Padre
             ImageView imgTarta = miFila.findViewById(R.id.imgTarta);
 
             txtTarta.setText(misTartas.get(position).sabor);
-            txtPrecio.setText(misTartas.get(position).precio);
+            txtPrecio.setText(String.valueOf(misTartas.get(position).precio));
             imgTarta.setImageResource(misTartas.get(position).imagen);
 
             return miFila;
         }
+
     }
     //**Clase Tarta para añadir a la lista personalizada**
     public static class Tarta implements Serializable {
-        String sabor, precio;
+        String sabor;
+        double precio;
         int imagen, id;
-        public Tarta(String sabor, String precio, int imagen) {  //Constructor de la clase Tarta
+        public Tarta(String sabor, double precio, int imagen) {  //Constructor de la clase Tarta
 
             this.sabor = sabor;
             this.precio = precio;
@@ -172,11 +194,11 @@ public class HomeActivity extends AppCompatActivity {   //Clase Padre
             this.sabor = sabor;
         }
 
-        public String getPrecio() {
+        public double getPrecio() {
             return precio;
         }
 
-        public void setPrecio(String precio) {
+        public void setPrecio(double precio) {
             this.precio = precio;
         }
 

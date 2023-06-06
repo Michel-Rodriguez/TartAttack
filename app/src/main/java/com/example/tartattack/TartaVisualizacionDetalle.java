@@ -1,7 +1,5 @@
 package com.example.tartattack;
 
-import static com.example.tartattack.utilidades.Utilidades.TABLA_TARTAPEDIDO;
-
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -14,13 +12,9 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.tartattack.utilidades.Utilidades;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,7 +31,7 @@ public class TartaVisualizacionDetalle extends HomeActivity {
 
         Bundle bundle = getIntent().getExtras();
         String s = bundle.getString("sabor");
-        String p = bundle.getString("precio");
+        double p = bundle.getDouble("precio");
         int i = bundle.getInt("img");
 
 
@@ -53,33 +47,28 @@ public class TartaVisualizacionDetalle extends HomeActivity {
 
         MiAdaptador adapter= new MiAdaptador(this,R.layout.tarta_layout_detallado_base, misTartasX);
         miLista.setAdapter(adapter);
-        //miLista.setOnItemClickListener(this);
 
 
     }
 
 
-
-
     public class MiAdaptador extends ArrayAdapter<HomeActivity.Tarta> {
-        private int mResource;
-        private ArrayList<HomeActivity.Tarta> misTartas;
+        private final int mResource;
 
 
         public MiAdaptador(@NonNull Context context, int resource, @NonNull List<HomeActivity.Tarta> objects) {
             super(context, resource, objects);
             mResource = resource;
-            misTartas = (ArrayList<HomeActivity.Tarta>) objects;
         }
 
 
         @NonNull
         @Override
         public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-            return crearFila(position, convertView, parent);
+            return crearFila(position, parent);
         }
 
-        private View crearFila(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+        private View crearFila(int position, @NonNull ViewGroup parent) {
             //Este método es invocado tantas veces como "filas" se pinten en la actividad
 
             LayoutInflater miInflador = getLayoutInflater();
@@ -90,7 +79,7 @@ public class TartaVisualizacionDetalle extends HomeActivity {
             ImageView imgTarta = miFila.findViewById(R.id.imageViewTarta);
 
             txtTarta.setText(misTartasX.get(position).sabor);
-            txtPrecio.setText(misTartasX.get(position).precio);
+            txtPrecio.setText(String.valueOf(misTartasX.get(position).precio));
             imgTarta.setImageResource(misTartasX.get(position).imagen);
 
             return miFila;
@@ -114,7 +103,7 @@ public class TartaVisualizacionDetalle extends HomeActivity {
         values.put(Utilidades.CAMPO_PRECIO, misTartasX.get(0).getPrecio());
         values.put(Utilidades.CAMPO_IMAGEN, misTartasX.get(0).getImagen());
 
-        long idResultante = db.insert(Utilidades.TABLA_TARTAPEDIDO, Utilidades.CAMPO_ID, values);
+        db.insert(Utilidades.TABLA_TARTAPEDIDO, Utilidades.CAMPO_ID, values);
         Toast.makeText(this, "Se ha añadido a la cesta: "+ misTartasX.get(0).getSabor(), Toast.LENGTH_SHORT).show();
         db.close();
     }

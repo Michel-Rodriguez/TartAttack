@@ -1,6 +1,5 @@
 package com.example.tartattack;
 
-
 import static com.example.tartattack.utilidades.Utilidades.TABLA_TARTAPEDIDO;
 import android.app.AlertDialog;
 import android.database.Cursor;
@@ -17,8 +16,6 @@ public class ShoppingCar extends HomeActivity {
     ConexionSQLiteHelper conn;
     ArrayList<Tarta> listaTartas;
     ListView miLista;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,7 +59,7 @@ public class ShoppingCar extends HomeActivity {
                 Tarta = new Tarta();
                 Tarta.setId(cursor.getInt(0));
                 Tarta.setSabor(cursor.getString(1));
-                Tarta.setPrecio(cursor.getString(2));
+                Tarta.setPrecio(cursor.getDouble(2));
                 Tarta.setImagen(cursor.getInt(3));
 
                 listaTartas.add(Tarta);

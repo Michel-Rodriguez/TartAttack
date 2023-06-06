@@ -15,6 +15,9 @@
         android:theme="@style/Theme.TartAttack"
         tools:targetApi="31">
         <activity
+            android:name=".Pago_Activity"
+            android:exported="false" />
+        <activity
             android:name=".TartaVisualizacionDetalle"
             android:exported="false" />
         <activity

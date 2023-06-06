@@ -91,7 +91,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tableRow4">
 
         <ImageButton
-            android:id="@+id/imageButton14"
+            android:id="@+id/tarta1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -101,17 +101,17 @@
             tools:ignore="SpeakableTextPresentCheck" />
 
         <ImageButton
-            android:id="@+id/imageButton15"
+            android:id="@+id/tarta2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@color/white"
             android:onClick="accesoImg"
-            app:srcCompat="@drawable/tartafresssr"
+            app:srcCompat="@drawable/tarta_vainilla_fresa_mini"
             tools:ignore="SpeakableTextPresentCheck" />
 
         <ImageButton
-            android:id="@+id/imageButton16"
+            android:id="@+id/tarta3"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"

@@ -120,7 +120,7 @@ public class TartasPersonalizadas extends HomeActivity implements Serializable{
             else {
                 Toast.makeText(this, "Ha preseleccionado tarta personalizada: " + saborFinal, Toast.LENGTH_LONG).show();
                 //Tarta tartaPedida = new Tarta(saborFinal, "30,00 €", R.drawable.tarta_personalizada);
-                enviarCesta(saborFinal, "30.00 €", R.drawable.tarta_personalizada);
+                enviarCesta(saborFinal, 30.00, R.drawable.tarta_personalizada);
 
             }
 
@@ -149,7 +149,7 @@ public class TartasPersonalizadas extends HomeActivity implements Serializable{
         }
     };
 
-    public void enviarCesta(String s, String p, int img){
+    public void enviarCesta(String s, Double p, int img){
 
         Intent intent = new Intent(this, TartaVisualizacionDetalle.class);
 

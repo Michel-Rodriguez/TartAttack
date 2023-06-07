@@ -13,6 +13,7 @@ import android.widget.Toast;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Objects;
 
 public class TartasPersonalizadas extends HomeActivity implements Serializable{
 
@@ -38,13 +39,12 @@ public class TartasPersonalizadas extends HomeActivity implements Serializable{
 
 
         ArrayList<String> cantidades = new ArrayList<>();
-        ArrayList<String>sabores = new ArrayList<>();
 
         for(int i = 1; i < 4; i++){
             cantidades.add(String.valueOf(i));
         }
 
-        sabores.addAll(Arrays.asList(saboresTarta));
+        ArrayList<String> sabores = new ArrayList<>(Arrays.asList(saboresTarta));
 
 
         ArrayAdapter<String> myAdapter = new ArrayAdapter<>(TartasPersonalizadas.this, android.R.layout.simple_spinner_dropdown_item, cantidades);
@@ -92,7 +92,7 @@ public class TartasPersonalizadas extends HomeActivity implements Serializable{
             }
         });
 
-        ArrayAdapter myAdapterSabores = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, sabores);
+        ArrayAdapter<String> myAdapterSabores = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, sabores);
         spinnerSabor1.setAdapter(myAdapterSabores);
         spinnerSabor2.setAdapter(myAdapterSabores);
         spinnerSabor3.setAdapter(myAdapterSabores);
@@ -115,31 +115,30 @@ public class TartasPersonalizadas extends HomeActivity implements Serializable{
                 }
             }
 
-            if (saborFinal.contains("Seleccione"))
+            //if (saborFinal.contains("Seleccione"))
+            if(((String) spinnerSabor1.getSelectedItem()).contains("Seleccione")){
                 Toast.makeText(this, "Falta algun sabor por añadir, o revise cantidad de sabores elegida", Toast.LENGTH_LONG).show();
-            else {
+                Log.i("si contiene seleccione", saborFinal);
+            } else {
                 Toast.makeText(this, "Ha preseleccionado tarta personalizada: " + saborFinal, Toast.LENGTH_LONG).show();
                 //Tarta tartaPedida = new Tarta(saborFinal, "30,00 €", R.drawable.tarta_personalizada);
+                Log.i("NO contiene seleccione", saborFinal);
+
                 enviarCesta(saborFinal, 30.00, R.drawable.tarta_personalizada);
-
             }
-
         });
-
     }
 
 
     AdapterView.OnItemSelectedListener myListener = new AdapterView.OnItemSelectedListener() {
 
         @Override
-        public void onItemSelected(AdapterView<?> adapterView, View view, int i,
-                                   long l) {
+        public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
             String sab =  (String) spinnerSabor1.getAdapter().getItem(i);
 
-            if ((sab != "" ) && !(sab.contains("Seleccione")))
-                Toast.makeText(TartasPersonalizadas.this, "Ha elegido sabor "+sab, Toast.LENGTH_SHORT).show();
-
-
+            if ((!Objects.equals(sab, "")) && (!sab.contains("Seleccione"))) {
+                Toast.makeText(TartasPersonalizadas.this, "Ha elegido sabor " + sab, Toast.LENGTH_SHORT).show();
+            }
         }
 
         @Override
@@ -152,7 +151,6 @@ public class TartasPersonalizadas extends HomeActivity implements Serializable{
     public void enviarCesta(String s, Double p, int img){
 
         Intent intent = new Intent(this, TartaVisualizacionDetalle.class);
-
         intent.putExtra("sabor", s);
         intent.putExtra("precio", p);
         intent.putExtra("img", img);

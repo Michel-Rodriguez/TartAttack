@@ -41,6 +41,7 @@
     <string name="cantidad_sabores">Choose quantity</string>
     <string name="sabor">Choose flavor</string>
     <string name="add_cesta">Add to cart</string>
+    <string name="tramitar_pedido">Buy now</string>
     <string name="Realizar_pago">Buy now</string>
     <string name="Limpiar_cesta">Delete products</string>
 </resources>

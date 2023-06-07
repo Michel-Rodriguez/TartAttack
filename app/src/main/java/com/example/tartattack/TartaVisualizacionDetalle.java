@@ -27,7 +27,7 @@ public class TartaVisualizacionDetalle extends HomeActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.tarta_layout_detallado);
+        setContentView(R.layout.tarta_visualizacion_detallado);
 
         Bundle bundle = getIntent().getExtras();
         String s = bundle.getString("sabor");
@@ -35,11 +35,9 @@ public class TartaVisualizacionDetalle extends HomeActivity {
         int i = bundle.getInt("img");
 
 
-
         miLista = findViewById(R.id.miListaD);
         misTartasX = new ArrayList<>();
 
-        //HomeActivity.Tarta e = new HomeActivity.Tarta("COCACOLA", "55 €", R.drawable.tarta_chocolate);
         HomeActivity.Tarta t = new HomeActivity.Tarta(s,p,i);
 
         misTartasX.add(t);
@@ -47,8 +45,6 @@ public class TartaVisualizacionDetalle extends HomeActivity {
 
         MiAdaptador adapter= new MiAdaptador(this,R.layout.tarta_layout_detallado_base, misTartasX);
         miLista.setAdapter(adapter);
-
-
     }
 
 

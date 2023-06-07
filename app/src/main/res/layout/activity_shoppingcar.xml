@@ -9,44 +9,57 @@
     <ListView
 
         android:id="@+id/miListaD"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="409dp"
+        android:layout_height="608dp"
         android:layout_marginStart="1dp"
-        android:layout_marginEnd="2dp"
-        android:layout_marginBottom="51dp"
+        android:layout_marginEnd="1dp"
         android:divider="@null"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/buttLimpiarCesta"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:onClick="limpiarTabla"
+        android:layout_marginTop="20dp"
         android:background="@color/tart"
+        android:onClick="limpiarTabla"
         android:text="@string/Limpiar_cesta"
         android:textColor="@color/black"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/buttComprar"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/miListaD" />
+        app:layout_constraintTop_toBottomOf="@+id/textSubtotal" />
 
     <Button
         android:id="@+id/buttComprar"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
+        android:layout_marginTop="20dp"
         android:background="@color/tart"
         android:drawableStart="@drawable/baseline_payment_24"
         android:drawablePadding="5dp"
-        android:text="@string/Realizar_pago"
+        android:text="@string/tramitar_pedido"
         android:textColor="@color/black"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/buttLimpiarCesta"
-        app:layout_constraintTop_toBottomOf="@+id/miListaD" />
+        app:layout_constraintTop_toBottomOf="@+id/textSubtotal" />
+
+    <TextView
+        android:id="@+id/textSubtotal"
+        android:layout_width="346dp"
+        android:layout_height="33dp"
+        android:layout_marginStart="9dp"
+        android:layout_marginTop="17dp"
+        android:text="Subtotal"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

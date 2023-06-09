@@ -26,6 +26,8 @@ public class Pago_Activity extends HomeActivity {
         Bundle bundle = getIntent().getExtras();
         double cont = bundle.getDouble("cuenta");
 
+        conn = new ConexionSQLiteHelper(this, "bd_tartaspedido", null, 1);
+
         textoDireccion = findViewById(R.id.textoDireccion);
         textoPrecio = findViewById(R.id.textoPrecio);
 

@@ -14,16 +14,12 @@ import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.NonNull;
-
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.firebase.auth.FirebaseUser;
@@ -59,14 +55,13 @@ public class Sesion_Usuario_Aut extends HomeActivity {
         GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
 
         if(acct!=null){
-            Toast.makeText(this, "ACCEDIENDO POR GOOGLE USER", Toast.LENGTH_SHORT).show();
             cambioH();
         }
 
-        butGoogle.setOnClickListener(v -> {
+       /* butGoogle.setOnClickListener(v -> {
             Toast.makeText(Sesion_Usuario_Aut.this, "ON CLIIIICCCCCK", Toast.LENGTH_SHORT).show();
             resultLauncher.launch(new Intent(gsc.getSignInIntent()));
-        });
+        });*/
 
         setup();
         sesion();
@@ -76,11 +71,11 @@ public class Sesion_Usuario_Aut extends HomeActivity {
         //Metodo para mantener la sesion iniciada
         SharedPreferences prefS = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE);
         String email = prefS.getString("email", null);
-        String provider = prefS.getString("provider", null);
+        //String provider = prefS.getString("provider", null);
 
-        if (email != null && provider != null) {
+        if (email != null) {
 
-            showHome(email,ProviderType.valueOf(provider));
+            showHome(email);
         }
     }
 
@@ -95,7 +90,7 @@ public class Sesion_Usuario_Aut extends HomeActivity {
                         .addOnCompleteListener(task -> {
                             if (task.isSuccessful()) {
                                 Toast.makeText(Sesion_Usuario_Aut.this, "Acceso exitoso", Toast.LENGTH_SHORT).show();
-                                showHome(task.getResult().getUser().getEmail(), ProviderType.BASIC); //@toString eliminad
+                                showHome(task.getResult().getUser().getEmail()); //@toString eliminad
                             } else {  //App va aqui
                                 Toast.makeText(Sesion_Usuario_Aut.this, "Error en el registro", Toast.LENGTH_LONG).show();
                             }
@@ -110,16 +105,13 @@ public class Sesion_Usuario_Aut extends HomeActivity {
                 mAuth.signInWithEmailAndPassword(    //Metodo para iniciar sesion
                                 etEmail.getText().toString(),
                                 etPassw.getText().toString())
-                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()) {
-                                    showHome(task.getResult().getUser().getEmail(), ProviderType.BASIC);
-                                    Toast.makeText(Sesion_Usuario_Aut.this, "Acceso exitoso", Toast.LENGTH_LONG).show();
-                                } else {  //App va aqui
-                                    Toast.makeText(Sesion_Usuario_Aut.this, "Error al logar", Toast.LENGTH_LONG).show();
-                                    //cambioH();
-                                }
+                        .addOnCompleteListener(task -> {
+                            if (task.isSuccessful()) {
+                                showHome(task.getResult().getUser().getEmail());
+                                Toast.makeText(Sesion_Usuario_Aut.this, "Acceso exitoso", Toast.LENGTH_LONG).show();
+                            } else {  //App va aqui
+                                Toast.makeText(Sesion_Usuario_Aut.this, "Error al logar", Toast.LENGTH_LONG).show();
+                                //cambioH();
                             }
                         });
             } else {
@@ -128,11 +120,11 @@ public class Sesion_Usuario_Aut extends HomeActivity {
         });
     }
 
-    private void showHome(String email, ProviderType provider) {
+    private void showHome(String email) {
 
         Intent intentHome = new Intent(this, Sesion_Usuario_Home.class);
         intentHome.putExtra("email", email);
-        intentHome.putExtra("provider", provider.name());
+        //intentHome.putExtra("provider", provider.name());
         startActivity(intentHome);
     }
 
@@ -150,7 +142,7 @@ public class Sesion_Usuario_Aut extends HomeActivity {
         if(currentUser != null) {
             Intent intent = new Intent(Sesion_Usuario_Aut.this, Sesion_Usuario_Home.class);
             startActivity(intent);
-            finish();
+            //finish();
         }
     }
 
@@ -167,7 +159,6 @@ public class Sesion_Usuario_Aut extends HomeActivity {
                     if (result.getResultCode() == Activity.RESULT_OK){
                         Intent intent = result.getData();
                         Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(intent);
-
                         try {
                             Log.i("PASA EL TRY", "PASA EL TRY");
                             GoogleSignInAccount account = task.getResult(ApiException.class);

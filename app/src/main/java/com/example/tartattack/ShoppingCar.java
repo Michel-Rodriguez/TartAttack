@@ -14,9 +14,12 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.tartattack.utilidades.Utilidades;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ShoppingCar extends HomeActivity {
 
@@ -25,6 +28,7 @@ public class ShoppingCar extends HomeActivity {
     ListView miLista;
     Button buttComprar;
     TextView subTotal;
+    private FirebaseFirestore dbFire;
     double cont = 0;
     DecimalFormat df = new DecimalFormat("#.00");
 
@@ -66,7 +70,7 @@ public class ShoppingCar extends HomeActivity {
 
         buttComprar.setOnClickListener(view -> {
 
-            if(cont <= 0.0){
+            if(cont <= 0.99){
                 Toast.makeText(this, "Cesta esta vacia, añada producto para tramitar pedido", Toast.LENGTH_SHORT).show();
 
             }else{
@@ -121,6 +125,19 @@ public class ShoppingCar extends HomeActivity {
         db.execSQL("DELETE FROM "+TABLA_TARTAPEDIDO+" WHERE "+CAMPO_ID+" = " + iEliminar);
         Toast.makeText(getApplicationContext(),"Se ha eliminado el producto de la cesta",Toast.LENGTH_LONG).show();
         db.close();
+    }
+
+    private void addPedido(){
+
+        Map<String, Object> map = new HashMap<>();
+            //map.put("user", tvEmail.getText());
+            //map.put("telefono", tlfn.getText().toString().trim());
+            //map.put("direccion", direccion.getText().toString());
+
+            dbFire.collection("Pedidos").add(map).addOnSuccessListener(documentReference -> {
+                Toast.makeText(this, "Creado exitosamente", Toast.LENGTH_SHORT).show();
+                //finish();
+            }).addOnFailureListener(e -> Toast.makeText(this, "Error al ingresar", Toast.LENGTH_SHORT).show());
     }
 
 

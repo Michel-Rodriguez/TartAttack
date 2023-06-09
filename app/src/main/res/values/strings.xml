@@ -44,6 +44,8 @@
     <string name="tramitar_pedido">Tramitar pedido</string>
     <string name="Limpiar_cesta">Eliminar productos</string>
     <string name="Realizar_pago">Buy now</string>
+    <string name="guardar_datos">Guardar datos</string>
+    <string name="eliminar_datos">Eliminar datos</string>
 
 
 </resources>

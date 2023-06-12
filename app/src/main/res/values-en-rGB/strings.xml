@@ -46,4 +46,6 @@
     <string name="Limpiar_cesta">Delete products</string>
     <string name="guardar_datos">Save data</string>
     <string name="eliminar_datos">Delete data</string>
+    <string name="compra_exitosa">Thank you for your purchase</string>
+    <string name="inicio">Go Homepage</string>
 </resources>

@@ -24,6 +24,8 @@ import java.util.List;
 public class HomeActivity extends AppCompatActivity {   //Clase Padre
 
     public static int idTarta = 0;
+
+    public  static  String correo;
     ImageButton tarta1, tarta2, tarta3;
 
     @Override

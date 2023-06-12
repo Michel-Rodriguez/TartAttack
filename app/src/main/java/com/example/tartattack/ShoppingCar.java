@@ -14,13 +14,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.tartattack.utilidades.Utilidades;
-import com.google.firebase.firestore.FirebaseFirestore;
-
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-
 public class ShoppingCar extends HomeActivity {
 
     ConexionSQLiteHelper conn;
@@ -28,9 +23,8 @@ public class ShoppingCar extends HomeActivity {
     ListView miLista;
     Button buttComprar;
     TextView subTotal;
-    private FirebaseFirestore dbFire;
-    double cont = 0;
     DecimalFormat df = new DecimalFormat("#.00");
+    double cont = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +35,7 @@ public class ShoppingCar extends HomeActivity {
         buttComprar = findViewById(R.id.buttComprar);
         subTotal = findViewById(R.id.textSubtotal);
         consultarLista();
-        subTotal.setText(String.format("Subtotal: %s", cont));
+        subTotal.setText(String.format("Subtotal: %s", df.format(cont)));
 
 
         MiAdaptador adapter = new MiAdaptador(this, R.layout.mi_fila_personalizada, listaTartas);
@@ -125,19 +119,6 @@ public class ShoppingCar extends HomeActivity {
         db.execSQL("DELETE FROM "+TABLA_TARTAPEDIDO+" WHERE "+CAMPO_ID+" = " + iEliminar);
         Toast.makeText(getApplicationContext(),"Se ha eliminado el producto de la cesta",Toast.LENGTH_LONG).show();
         db.close();
-    }
-
-    private void addPedido(){
-
-        Map<String, Object> map = new HashMap<>();
-            //map.put("user", tvEmail.getText());
-            //map.put("telefono", tlfn.getText().toString().trim());
-            //map.put("direccion", direccion.getText().toString());
-
-            dbFire.collection("Pedidos").add(map).addOnSuccessListener(documentReference -> {
-                Toast.makeText(this, "Creado exitosamente", Toast.LENGTH_SHORT).show();
-                //finish();
-            }).addOnFailureListener(e -> Toast.makeText(this, "Error al ingresar", Toast.LENGTH_SHORT).show());
     }
 
 

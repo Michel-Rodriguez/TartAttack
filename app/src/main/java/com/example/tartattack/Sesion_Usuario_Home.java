@@ -11,23 +11,16 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.annotation.NonNull;
-
 import com.bumptech.glide.Glide;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -44,7 +37,7 @@ public class Sesion_Usuario_Home extends HomeActivity {
 
     private FirebaseFirestore dbFire;
 
-    private ArrayList<Tarta> listaT;
+    //private ArrayList<Tarta> listaT;
 
 
     @Override
@@ -83,11 +76,9 @@ public class Sesion_Usuario_Home extends HomeActivity {
             setup(acct.getEmail());
             String url = String.valueOf(acct.getPhotoUrl());
             Glide.with(this).load(url).into(img);
-            Toast.makeText(this, "GOOGLE ACOUNT", Toast.LENGTH_SHORT).show();
 
         }else{
             //si no es por cuenta de google obtenemos los datos del intent y se lo pasamos al metodo septup()
-            Toast.makeText(this, "POR EMAAAIL", Toast.LENGTH_SHORT).show();
             Bundle operador = getIntent().getExtras();
             String email1 = operador.getString("email");
             String provider1 = operador.getString("provider");
@@ -103,6 +94,8 @@ public class Sesion_Usuario_Home extends HomeActivity {
             editor.apply();
 
         }
+
+        correo = tvEmail.getText().toString();
     }
 
     private void setup(String email) {
@@ -131,17 +124,6 @@ public class Sesion_Usuario_Home extends HomeActivity {
 
             }
 
-
-
-            /*Map<String, Object> map = new HashMap<>();
-            map.put("user", tvEmail.getText());
-            map.put("telefono", tlfn.getText().toString().trim());
-            map.put("direccion", direccion.getText().toString());
-
-            dbFire.collection("Usuarios").add(map).addOnSuccessListener(documentReference -> {
-                Toast.makeText(Sesion_Usuario_Home.this, "Creado exitosamente", Toast.LENGTH_SHORT).show();
-                //finish();
-            }).addOnFailureListener(e -> Toast.makeText(Sesion_Usuario_Home.this, "Error al ingresar", Toast.LENGTH_SHORT).show());*/
         });
 
         deleteButton.setOnClickListener(view1 -> {
@@ -150,9 +132,6 @@ public class Sesion_Usuario_Home extends HomeActivity {
             direccion.setText("");
             tlfn.setText("");
         });
-
-
-
     }
 
 
@@ -162,22 +141,9 @@ public class Sesion_Usuario_Home extends HomeActivity {
         });
     }
 
-    public void addPedido(){
-        Map<String, Object> map = new HashMap<>();
 
-        map.put("user", tvEmail.getText());
-        map.put("telefono", tlfn.getText().toString().trim());
-        map.put("direccion", direccion.getText().toString());
-
-        dbFire.collection("Usuarios").add(map).addOnSuccessListener(documentReference -> {
-            Toast.makeText(Sesion_Usuario_Home.this, "Creado exitosamente", Toast.LENGTH_SHORT).show();
-            //finish();
-        }).addOnFailureListener(e -> Toast.makeText(Sesion_Usuario_Home.this, "Error al ingresar", Toast.LENGTH_SHORT).show());
-    }
 
     public void addCollection(){
-
-        String t = tlfn.getText().toString().trim();
 
         Map<String, Object> userData = new HashMap<>();
         //userData.put("listaTartas", listaT);
@@ -209,8 +175,6 @@ public class Sesion_Usuario_Home extends HomeActivity {
         });
 
     }
-
-
 
 
 

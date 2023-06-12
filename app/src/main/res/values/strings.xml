@@ -46,6 +46,8 @@
     <string name="Realizar_pago">Buy now</string>
     <string name="guardar_datos">Guardar datos</string>
     <string name="eliminar_datos">Eliminar datos</string>
+    <string name="compra_exitosa">Compra realizada exitosamente, muchas gracias por confiar en nosotros</string>
+    <string name="inicio">ir a pagina principal</string>
 
 
 </resources>

@@ -8,6 +8,23 @@
 
 
     <EditText
+        android:id="@+id/textoTelefono"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="20dp"
+        android:drawableStart="@drawable/baseline_smartphone_24"
+        android:drawablePadding="5dp"
+        android:hint="Escriba telefono de contacto"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textoNombre" />
+
+    <EditText
         android:id="@+id/textoCodigoPostal"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -63,7 +80,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="40dp"
         android:drawableStart="@drawable/baseline_person_24"
         android:drawablePadding="5dp"
         android:hint="Escriba nombre de destinatario"
@@ -90,7 +107,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textoNombre" />
+        app:layout_constraintTop_toBottomOf="@+id/textoTelefono" />
 
     <TextView
         android:id="@+id/textoPrecio"
